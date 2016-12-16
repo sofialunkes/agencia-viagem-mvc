@@ -61,5 +61,25 @@ namespace agencia_viagem_mvc.Controllers {
             }
             return View(cliente);
         }
+
+        public ActionResult Delete (long? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente cliente = context.Clientes.Find(id);
+            if(cliente == null) {
+                return HttpNotFound();
+            }
+            return View(cliente);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete (long id) {
+            Cliente cliente = context.Clientes.Find(id);
+            context.Clientes.Remove(cliente);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

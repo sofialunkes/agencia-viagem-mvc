@@ -1,4 +1,4 @@
-﻿@model agencia_viagem_mvc.Models.Cliente
+﻿@model agencia_viagem_mvc.Models.Hotel
 
 @{
     Layout = null;
@@ -18,73 +18,57 @@
 </head>
 <body>
     <div>
-        <h4>Cliente</h4>
+        <h4>Hotel</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.NomeFantasia)
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.Nome)
+                @Html.DisplayFor(model => model.NomeFantasia)
             </dd>
-    
+
             <dt>
-                @Html.DisplayNameFor(model => model.Sobrenome)
+                @Html.DisplayNameFor(model => model.Cnpj)
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.Sobrenome)
+                @Html.DisplayFor(model => model.Cnpj)
             </dd>
-    
+
             <dt>
-                @Html.DisplayNameFor(model => model.DataNascimento)
+                @Html.DisplayNameFor(model => model.Telefone)
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.DataNascimento)
+                @Html.DisplayFor(model => model.Telefone)
             </dd>
-    
+
             <dt>
-                @Html.DisplayNameFor(model => model.Cpf)
+                @Html.DisplayNameFor(model => model.Classificacao)
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.Cpf)
+                @Html.DisplayFor(model => model.Classificacao)
             </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Rg)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Rg)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Endereco)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Endereco)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Bairro)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Bairro)
             </dd>
-    
+
         </dl>
     </div>
     <p>

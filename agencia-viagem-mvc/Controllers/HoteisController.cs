@@ -52,5 +52,37 @@ namespace agencia_viagem_mvc.Controllers {
             }
             return View(hotel);
         }
+
+        public ActionResult Details(long? id) {
+            if(id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Hotel hotel = context.Hoteis.Find(id);
+            if(hotel == null) {
+                return HttpNotFound();
+            }
+            return View(hotel);
+        }
+
+        public ActionResult Delete(long? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Hotel hotel = context.Hoteis.Find(id);
+            if(hotel == null) {
+                return HttpNotFound();
+            }
+            return View(hotel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(long id) {
+            Hotel hotel = context.Hoteis.Find(id);
+            context.Hoteis.Remove(hotel);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }
