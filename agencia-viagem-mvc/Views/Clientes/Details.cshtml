@@ -1,0 +1,95 @@
+﻿@model agencia_viagem_mvc.Models.Cliente
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <h4>Cliente</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sobrenome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sobrenome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataNascimento)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cpf)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Rg)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Rg)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Endereco)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Bairro)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
