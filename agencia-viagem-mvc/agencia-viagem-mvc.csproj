@@ -168,6 +168,7 @@
     <Content Include="Views\Clientes\Delete.cshtml" />
     <Content Include="Views\Hoteis\Details.cshtml" />
     <Content Include="Views\Hoteis\Delete.cshtml" />
+    <Content Include="Views\Hoteis\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
