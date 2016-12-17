@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    @RenderSection("styles",false)
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="page-header bg-danger">
+                <h1>
+                    Sistema de Gerenciamento de Viagens
+                    <small>Utilizando ASP.NET MVC e Bootstrap</small>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-md-3 bg-success">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" class="active"><a href="#">Home</a></li>
+                    <li role="presentation">@Html.ActionLink("Hoteis", "Index", "Hoteis")</li>
+                    <li role="presentation">@Html.ActionLink("Clientes", "Index", "Clientes")</li>
+                    <li role="presentation">@Html.ActionLink("Pacotes", "Index", "Pacotes")</li>
+                </ul>
+            </div>
+            <div class="=col-xs-9 col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 bg-danger">
+                <small>Reescrita do sistema anterior Webforms para MVC</small>
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery-3.1.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    @RenderSection("ScriptPage", false)
+
+</body>
+</html>

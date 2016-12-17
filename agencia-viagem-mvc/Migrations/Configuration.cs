@@ -6,7 +6,8 @@ namespace agencia_viagem_mvc.Migrations {
 
     internal sealed class Configuration : DbMigrationsConfiguration<agencia_viagem_mvc.Context.EFContext> {
         public Configuration() {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(agencia_viagem_mvc.Context.EFContext context) {
