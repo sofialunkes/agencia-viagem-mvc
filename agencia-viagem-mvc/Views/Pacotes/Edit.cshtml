@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Alterando informações de Pacote";
+    ViewBag.Title = "Alterando informações do Pacote";
 }
 
 @using (Html.BeginForm()) {
@@ -46,4 +46,8 @@
             </div>
         </div>
     </div>
+}
+@section ScriptPage{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
 }
