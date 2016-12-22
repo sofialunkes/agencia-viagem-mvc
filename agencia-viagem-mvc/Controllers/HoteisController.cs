@@ -81,6 +81,7 @@ namespace agencia_viagem_mvc.Controllers {
             Hotel hotel = context.Hoteis.Find(id);
             context.Hoteis.Remove(hotel);
             context.SaveChanges();
+            TempData["Mensagem"] = "Hotel " + hotel.NomeFantasia.ToUpper() + " foi removido";
             return RedirectToAction("Index");
 
         }

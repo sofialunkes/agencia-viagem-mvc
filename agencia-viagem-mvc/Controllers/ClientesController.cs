@@ -79,6 +79,7 @@ namespace agencia_viagem_mvc.Controllers {
             Cliente cliente = context.Clientes.Find(id);
             context.Clientes.Remove(cliente);
             context.SaveChanges();
+            TempData["Mensagem"] = "Hotel " + cliente.Nome.ToUpper() + " foi removido";
             return RedirectToAction("Index");
         }
     }

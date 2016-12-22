@@ -79,6 +79,7 @@ namespace agencia_viagem_mvc.Controllers {
             Pacote pacote = context.Pacotes.Find(id);
             context.Pacotes.Remove(pacote);
             context.SaveChanges();
+            TempData["Mensagem"] = "Pacote " + pacote.Nome.ToUpper() + " foi removido";
             return RedirectToAction("Index");
         }
     }
