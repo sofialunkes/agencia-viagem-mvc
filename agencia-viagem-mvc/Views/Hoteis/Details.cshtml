@@ -1,79 +1,85 @@
 ﻿@model agencia_viagem_mvc.Models.Hotel
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Visualizando Dados do Hotel";
 }
 
-<!DOCTYPE html>
+<div class="panel panel-primary">
+    <div class="panel-heading">Detalhes Hotel @Html.DisplayFor(model => model.NomeFantasia)</div>
+    <div class="panel-body">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-bed"></i>
+                </span>
+                @Html.EditorFor(model => model.NomeFantasia, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-</head>
-<body>
-    <div>
-        <h4>Hotel</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.NomeFantasia)
-            </dt>
+            </div>
+        </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.NomeFantasia)
-            </dd>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Cnpj)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-list"></i>
+                </span>
+                @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Cnpj)
-            </dt>
+        </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Cnpj)
-            </dd>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Telefone)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-earphone"></i>
+                </span>
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </dt>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Classificacao)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-star"></i>
+                </span>
+                @Html.EditorFor(model => model.Classificacao, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Telefone)
-            </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Classificacao)
-            </dt>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Endereco)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-home"></i>
+                </span>
+                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                Bairro @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Classificacao)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Endereco)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Bairro)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Bairro)
-            </dd>
-
-        </dl>
     </div>
-    <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Retornar a Lista", "Index")
-    </p>
-</body>
-</html>
+    <div class="panel-footer panel-info">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-4">
+                    @Html.ActionLink("Retornar a Listagem de Hoteis", "Index", null, new { @class = "btn btn-info col-md-12" })
+                </div>
+                <div class="col-md-6">
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-info col-md-8" })
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
