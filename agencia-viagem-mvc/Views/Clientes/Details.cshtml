@@ -1,95 +1,99 @@
 ﻿@model agencia_viagem_mvc.Models.Cliente
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Visualizando Dados do Cliente";
 }
 
-<!DOCTYPE html>
+<div class="panel panel-primary">
+    <div class="panel-heading">Detalhes Cliente @Html.DisplayFor(model => model.Nome) </div>
+    <div class="panel-body">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Nome)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                <div class="form-control" disabled="true">
+                    @Html.DisplayFor(model => model.Nome)
+                    @Html.DisplayFor(model => model.Sobrenome)
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.DataNascimento)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-</head>
-<body>
-    <div>
-        <h4>Cliente</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Nome)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Nome)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Sobrenome)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Sobrenome)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DataNascimento)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DataNascimento)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Cpf)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Cpf)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Rg)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Rg)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Endereco)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Bairro)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Bairro)
-            </dd>
-    
-        </dl>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Cpf)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-list"></i>
+                </span>
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Rg)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon  glyphicon-list"></i>
+                </span>
+                @Html.EditorFor(model => model.Rg, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Email)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    @Html.Raw("@")
+                </span>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <span><i></i></span>
+            @Html.DisplayNameFor(model => model.Endereco)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <div class="form-control" disabled="true">
+                    Rua @Html.DisplayFor(model => model.Endereco), Bairro @Html.DisplayFor(model => model.Bairro)
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-footer panel-info">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-4">
+                        @Html.ActionLink("Retornar a Listagem de Clientes", "Index", null, new { @class = "btn btn-info col-md-12" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.ActionLink("Alterar", "Edit", new { id = Model.Id }, new { @class = "btn btn-info col-md-8" })
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Retornar a Lista", "Index")
-    </p>
-</body>
-</html>
