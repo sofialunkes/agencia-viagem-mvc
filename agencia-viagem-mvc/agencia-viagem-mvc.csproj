@@ -372,6 +372,7 @@
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\Pacote.cs" />
+    <Compile Include="Models\Viagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
