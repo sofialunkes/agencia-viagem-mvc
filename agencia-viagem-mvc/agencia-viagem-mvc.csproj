@@ -341,6 +341,10 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -363,6 +367,7 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HoteisController.cs" />
     <Compile Include="Controllers\PacotesController.cs" />
+    <Compile Include="Controllers\VendasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -372,7 +377,7 @@
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\Pacote.cs" />
-    <Compile Include="Models\Viagem.cs" />
+    <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -396,6 +401,7 @@
     <Content Include="Views\Pacotes\Details.cshtml" />
     <Content Include="Views\Pacotes\Delete.cshtml" />
     <Content Include="Views\Pacotes\Index.cshtml" />
+    <Content Include="Views\Vendas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

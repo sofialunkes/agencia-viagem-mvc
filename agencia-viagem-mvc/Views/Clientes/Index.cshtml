@@ -25,9 +25,6 @@
                         @Html.DisplayNameFor(model => model.Sobrenome)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DataNascimento)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.Cpf)
                     </th>
                     <th>
@@ -46,17 +43,14 @@
                             @Html.DisplayFor(modelItem => item.Sobrenome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DataNascimento)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Cpf)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         <td class="btn-group btn-group-xs col-md-offset-7 col-md-3" role="group">
-                            @Html.ActionLink("Alterar", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) 
-                            @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-warning" }) 
+                            @Html.ActionLink("Alterar", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-warning" })
                             @Html.ActionLink("Remover", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
                         </td>
                     </tr>
