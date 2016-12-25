@@ -13,5 +13,6 @@ namespace agencia_viagem_mvc.Context {
         public DbSet<Cidade> Cidades { get; set; }
         public DbSet<Estado> Estados { get; set; }
         public DbSet<Pacote> Pacotes { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
     }
 }
