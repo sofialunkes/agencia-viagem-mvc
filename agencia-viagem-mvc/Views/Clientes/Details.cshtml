@@ -21,16 +21,6 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.DataNascimento)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                </span>
-                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-            </div>
-        </div>
 
 
         <div class="form-group">
@@ -68,20 +58,6 @@
             </div>
         </div>
 
-
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.Endereco)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-home"></i>
-                </span>
-                <div class="form-control" disabled="true">
-                    Rua @Html.DisplayFor(model => model.Endereco), Bairro @Html.DisplayFor(model => model.Bairro)
-                </div>
-
-            </div>
-        </div>
     </div>
 
     <div class="panel-footer panel-info">

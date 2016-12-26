@@ -19,30 +19,6 @@
 
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.Cnpj)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-list"></i>
-                </span>
-                @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-            </div>
-
-        </div>
-
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.Telefone)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-earphone"></i>
-                </span>
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-            </div>
-        </div>
-
         <div class="form-group">
             @Html.DisplayNameFor(model => model.Classificacao)
             <br />
@@ -63,8 +39,7 @@
                     <i class="glyphicon glyphicon-home"></i>
                 </span>
                 <div class="form-control" disabled="true">
-                    @Html.DisplayFor(model => model.Endereco), Bairro
-                    @Html.DisplayFor(model => model.Bairro)
+                    @Html.DisplayFor(model => model.Endereco)
                 </div>
                 
             </div>
