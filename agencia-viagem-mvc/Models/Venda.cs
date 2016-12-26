@@ -7,6 +7,7 @@ namespace agencia_viagem_mvc.Models {
     public class Venda {
         public long? Id { get; set; }
         public string Descricao { get; set; }
+        public DateTime DataAquisicao { get; set; }
 
         public long? ClienteId { get; set; }
         public long? PacoteId { get; set; }
