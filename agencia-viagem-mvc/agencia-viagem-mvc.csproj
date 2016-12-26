@@ -398,6 +398,7 @@
     <Content Include="Views\Pacotes\Delete.cshtml" />
     <Content Include="Views\Pacotes\Index.cshtml" />
     <Content Include="Views\Vendas\Index.cshtml" />
+    <Content Include="Views\Vendas\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
