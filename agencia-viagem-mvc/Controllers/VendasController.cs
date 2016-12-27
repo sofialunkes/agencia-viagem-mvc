@@ -6,6 +6,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
 using agencia_viagem_mvc.Models;
+using System.Net;
 
 namespace agencia_viagem_mvc.Controllers {
     public class VendasController : Controller {
@@ -41,8 +42,17 @@ namespace agencia_viagem_mvc.Controllers {
         }
 
         // GET: Vendas/Edit/5
-        public ActionResult Edit(int id) {
-            return View();
+        public ActionResult Edit(long? id) {
+            if(id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Venda venda = context.Vendas.Find(id);
+            if(venda == null) {
+                return HttpNotFound();
+            }
+            ViewBag.ClienteId = new SelectList(context.Clientes.OrderBy(b => b.Nome), "Id","Nome", venda.ClienteId);
+            ViewBag.PacoteId = new SelectList(context.Pacotes.OrderBy(b => b.Nome), "Id", "Nome", venda.PacoteId);
+            return View(venda);
         }
 
         // POST: Vendas/Edit/5
