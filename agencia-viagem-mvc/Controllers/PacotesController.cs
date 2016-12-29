@@ -42,6 +42,7 @@ namespace agencia_viagem_mvc.Controllers {
             if (pacote == null) {
                 return HttpNotFound();
             }
+            ViewBag.HotelId = new SelectList(context.Hoteis.OrderBy(b => b.NomeFantasia), "Id", "NomeFantasia",pacote.HotelId);
             return View(pacote);
         }
 
