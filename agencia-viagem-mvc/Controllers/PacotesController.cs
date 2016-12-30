@@ -13,12 +13,24 @@ namespace agencia_viagem_mvc.Controllers {
         private EFContext context = new EFContext();
         // GET: Pacotes
         public ActionResult Index() {
-            var pacotes = context.Pacotes.Include(h => h.Hotel).OrderBy(n => n.Id);
+            var pacotes = context.Pacotes.Include(p => p.Hotel).OrderBy(p => p.Id);
             return View(pacotes);
         }
 
+
+        public ActionResult Details(long? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Pacote pacote = context.Pacotes.Where(p => p.Id == id).Include(h => h.Hotel).First();
+            if (pacote == null) {
+                return HttpNotFound();
+            }
+            return View(pacote);
+        }
+
         public ActionResult Create() {
-            ViewBag.HotelId = new SelectList(context.Hoteis.OrderBy(b => b.Id), "Id", "NomeFantasia");
+            ViewBag.HotelId = new SelectList(context.Hoteis.OrderBy(h => h.Id), "Id", "NomeFantasia");
             return View();
         }
 
@@ -34,6 +46,7 @@ namespace agencia_viagem_mvc.Controllers {
             }
         }
 
+
         public ActionResult Edit(long? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -42,30 +55,24 @@ namespace agencia_viagem_mvc.Controllers {
             if (pacote == null) {
                 return HttpNotFound();
             }
-            ViewBag.HotelId = new SelectList(context.Hoteis.OrderBy(b => b.NomeFantasia), "Id", "NomeFantasia",pacote.HotelId);
+            ViewBag.HotelId = new SelectList(context.Hoteis.OrderBy(b => b.NomeFantasia), "Id", "NomeFantasia", pacote.HotelId);
             return View(pacote);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Pacote pacote) {
-            if (ModelState.IsValid) {
-                context.Entry(pacote).State = EntityState.Modified;
-                context.SaveChanges();
-                return RedirectToAction("Index");
+            try {
+                if (ModelState.IsValid) {
+                    context.Entry(pacote).State = EntityState.Modified;
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(pacote);
+            } catch {
+                return View(pacote);
             }
-            return View(pacote);
-        }
 
-        public ActionResult Details(long? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Pacote pacote = context.Pacotes.Find(id);
-            if (pacote == null) {
-                return HttpNotFound();
-            }
-            return View(pacote);
         }
 
         public ActionResult Delete(long? id) {
