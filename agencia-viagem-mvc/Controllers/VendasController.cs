@@ -23,7 +23,7 @@ namespace agencia_viagem_mvc.Controllers {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Venda venda = context.Vendas.Where(v => v.Id == id).Include(c => c.Cliente).Include(p => p.Pacote).First();
-            if(venda == null) {
+            if (venda == null) {
                 return HttpNotFound();
             }
             return View(venda);
@@ -94,10 +94,12 @@ namespace agencia_viagem_mvc.Controllers {
         // POST: Vendas/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Venda venda) {
+        public ActionResult Delete(long id) {
             try {
-                // TODO: Add delete logic here
-
+                Venda venda = context.Vendas.Find(id);
+                context.Vendas.Remove(venda);
+                context.SaveChanges();
+                TempData["Mensagem"] = "A compra realizada do cliente "+venda.Cliente.Nome+" foi removida";
                 return RedirectToAction("Index");
             } catch {
                 return View();
