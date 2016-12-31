@@ -80,14 +80,21 @@ namespace agencia_viagem_mvc.Controllers {
         }
 
         // GET: Vendas/Delete/5
-        public ActionResult Delete(int id) {
-            return View();
+        public ActionResult Delete(long? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Venda venda = context.Vendas.Where(v => v.Id == id).Include(c => c.Cliente).Include(p => p.Pacote).First();
+            if (venda == null) {
+                return HttpNotFound();
+            }
+            return View(venda);
         }
 
         // POST: Vendas/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Venda venda) {
+        public ActionResult Delete(Venda venda) {
             try {
                 // TODO: Add delete logic here
 
