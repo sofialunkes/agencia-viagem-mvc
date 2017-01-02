@@ -55,7 +55,7 @@ namespace agencia_viagem_mvc.Controllers {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = context.Clientes.Find(id);
+            Cliente cliente = context.Clientes.Where(c => c.Id == id).Include("Vendas.Pacote").First();
             if (cliente == null) {
                 return HttpNotFound();
             }
