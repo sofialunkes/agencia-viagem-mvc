@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace agencia_viagem_mvc.Context {
+namespace Persistencia.Contexts {
     public class EFContext : DbContext {
         public EFContext() : base("AgenciaViagem") {
             Database.SetInitializer<EFContext>(new DropCreateDatabaseIfModelChanges<EFContext>());
@@ -17,5 +17,10 @@ namespace agencia_viagem_mvc.Context {
         public DbSet<Estado> Estados { get; set; }
         public DbSet<Pacote> Pacotes { get; set; }
         public DbSet<Venda> Vendas { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }
