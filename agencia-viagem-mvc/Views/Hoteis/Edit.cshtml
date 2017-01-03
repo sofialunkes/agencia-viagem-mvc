@@ -57,6 +57,8 @@
     </div>
 
 }
+@Html.Partial("~/Views/Pacotes/_PorHotel.cshtml", Model.Pacotes.ToList())
+
 @section ScriptPage{
     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>

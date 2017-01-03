@@ -407,6 +407,8 @@
     <Content Include="Views\Vendas\Details.cshtml" />
     <Content Include="Views\Vendas\Delete.cshtml" />
     <Content Include="Views\Vendas\_PorCliente.cshtml" />
+    <Content Include="Views\Pacotes\_PorHotel.cshtml" />
+    <Content Include="Views\Vendas\_PorPacote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

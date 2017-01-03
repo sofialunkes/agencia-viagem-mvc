@@ -22,7 +22,7 @@ namespace agencia_viagem_mvc.Controllers {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pacote pacote = context.Pacotes.Where(p => p.Id == id).Include(h => h.Hotel).First();
+            Pacote pacote = context.Pacotes.Where(p => p.Id == id).Include("Vendas.Cliente").First();
             if (pacote == null) {
                 return HttpNotFound();
             }

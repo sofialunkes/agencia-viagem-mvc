@@ -53,6 +53,8 @@
         </div>
     </div>
 </div>
+@Html.Partial("~/Views/Vendas/_PorPacote.cshtml", Model.Vendas.ToList())
+
 @section ScriptPage{
     <script type="text/javascript">
         $(document).ready(function () {

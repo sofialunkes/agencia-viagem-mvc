@@ -41,8 +41,7 @@
                     <i class="glyphicon glyphicon-home"></i>
                 </span>
                 <div class="form-control" disabled="true">
-                    @Html.DisplayFor(model => model.Endereco), Bairro
-                    @Html.DisplayFor(model => model.Bairro)
+                    @Html.DisplayFor(model => model.Endereco)
                 </div>
 
             </div>
@@ -64,3 +63,14 @@
         }
     </div>
 </div>
+@Html.Partial("~/Views/Pacotes/_PorHotel.cshtml", Model.Pacotes.ToList())
+
+
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#menuHotel').addClass("active");
+        });
+</script>
+}

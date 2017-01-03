@@ -57,7 +57,7 @@ namespace agencia_viagem_mvc.Controllers {
             if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hotel hotel = context.Hoteis.Find(id);
+            Hotel hotel = context.Hoteis.Where( h => h.Id == id).Include("Pacotes").First();
             if(hotel == null) {
                 return HttpNotFound();
             }
