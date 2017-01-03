@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace agencia_viagem_mvc.Models {
+namespace Modelo.Tabelas{
     public class Estado {
         public long Id { get; set; }
         public string Nome { get; set; }

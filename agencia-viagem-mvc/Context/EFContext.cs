@@ -1,4 +1,5 @@
-﻿using agencia_viagem_mvc.Models;
+﻿using Modelo.Tabelas;
+using Modelo.Cadastros;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

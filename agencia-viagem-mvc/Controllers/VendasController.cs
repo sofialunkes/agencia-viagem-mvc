@@ -5,8 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
-using agencia_viagem_mvc.Models;
 using System.Net;
+using Modelo.Cadastros;
 
 namespace agencia_viagem_mvc.Controllers {
     public class VendasController : Controller {

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Modelo.Tabelas;
 
-namespace agencia_viagem_mvc.Models {
+namespace Modelo.Cadastros{
     public class Pacote {
         public long Id { get; set; }
         public string Nome { get; set; }
