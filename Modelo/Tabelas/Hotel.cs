@@ -12,8 +12,9 @@ namespace Modelo.Tabelas {
         public string NomeFantasia { get; set; }
         public string Classificacao { get; set; }
         public string Endereco { get; set; }
-        public Cidade Cidade { get; set; }
+        
+        public long? PacoteId { get; set; }
 
-        public virtual ICollection<Pacote> Pacotes { get; set; }
+        public Pacote Pacote { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Modelo.Tabelas {
         public string Rg { get; set; }
         public string Email { get; set; }
 
-        public virtual ICollection<Venda> Vendas { get; set; }
+        public virtual ICollection<Compra> Compras { get; set; }
 
     }
 }

@@ -1,5 +1,5 @@
-﻿using agencia_viagem_mvc.Context;
-using Modelo.Cadastros;
+﻿using Modelo.Cadastros;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,7 +13,7 @@ namespace agencia_viagem_mvc.Controllers {
         private EFContext context = new EFContext();
         // GET: Pacotes
         public ActionResult Index() {
-            var pacotes = context.Pacotes.Include(p => p.Hotel).OrderBy(p => p.Id);
+            var pacotes = context.Pacotes.Include(p => p.Hoteis).OrderBy(p => p.Id);
             return View(pacotes);
         }
 
@@ -22,7 +22,7 @@ namespace agencia_viagem_mvc.Controllers {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pacote pacote = context.Pacotes.Where(p => p.Id == id).Include("Vendas.Cliente").First();
+            Pacote pacote = context.Pacotes.Where(p => p.Id == id).Include("Compras.Pacote.Hoteis").First();
             if (pacote == null) {
                 return HttpNotFound();
             }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace Modelo.Cadastros{
-    public class Venda {
+    public class Compra {
         public long? Id { get; set; }
         public string Descricao { get; set; }
         public DateTime DataAquisicao { get; set; }

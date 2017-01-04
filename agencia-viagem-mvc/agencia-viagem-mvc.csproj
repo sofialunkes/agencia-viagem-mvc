@@ -363,11 +363,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Context\EFContext.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HoteisController.cs" />
     <Compile Include="Controllers\PacotesController.cs" />
-    <Compile Include="Controllers\VendasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -395,14 +394,14 @@
     <Content Include="Views\Pacotes\Details.cshtml" />
     <Content Include="Views\Pacotes\Delete.cshtml" />
     <Content Include="Views\Pacotes\Index.cshtml" />
-    <Content Include="Views\Vendas\Index.cshtml" />
-    <Content Include="Views\Vendas\Create.cshtml" />
-    <Content Include="Views\Vendas\Edit.cshtml" />
-    <Content Include="Views\Vendas\Details.cshtml" />
-    <Content Include="Views\Vendas\Delete.cshtml" />
-    <Content Include="Views\Vendas\_PorCliente.cshtml" />
+    <Content Include="Views\Compras\Index.cshtml" />
+    <Content Include="Views\Compras\Create.cshtml" />
+    <Content Include="Views\Compras\Edit.cshtml" />
+    <Content Include="Views\Compras\Details.cshtml" />
+    <Content Include="Views\Compras\Delete.cshtml" />
+    <Content Include="Views\Compras\_PorCliente.cshtml" />
     <Content Include="Views\Pacotes\_PorHotel.cshtml" />
-    <Content Include="Views\Vendas\_PorPacote.cshtml" />
+    <Content Include="Views\Compras\_PorPacote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -412,12 +411,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modelo\Modelo.csproj">
       <Project>{ccb93c66-2b56-41c6-a11f-9e5b0ba910eb}</Project>
       <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{d39042ad-925c-4dbf-bf9b-6964114fb3fd}</Project>
+      <Name>Persistencia</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

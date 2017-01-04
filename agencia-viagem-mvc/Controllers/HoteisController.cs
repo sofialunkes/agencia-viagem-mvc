@@ -1,4 +1,4 @@
-﻿using agencia_viagem_mvc.Context;
+﻿using Persistencia.Contexts;
 using Modelo.Tabelas;
 using System;
 using System.Collections.Generic;
@@ -57,7 +57,7 @@ namespace agencia_viagem_mvc.Controllers {
             if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hotel hotel = context.Hoteis.Where( h => h.Id == id).Include("Pacotes").First();
+            Hotel hotel = context.Hoteis.Where( h => h.Id == id).Include("Pacote").First();
             if(hotel == null) {
                 return HttpNotFound();
             }

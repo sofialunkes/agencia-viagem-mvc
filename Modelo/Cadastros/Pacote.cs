@@ -10,11 +10,8 @@ namespace Modelo.Cadastros{
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public int QuantidadeDias { get; set; }
-
-        public long? HotelId { get; set; }
-
-        public Hotel Hotel { get; set; }
-
-        public virtual ICollection<Venda> Vendas { get; set; }
+        
+        public virtual ICollection<Hotel> Hoteis { get; set; }
+        public virtual ICollection<Compra> Compras { get; set; }
     }
 }
