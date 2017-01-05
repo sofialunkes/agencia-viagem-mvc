@@ -23,7 +23,7 @@ namespace agencia_viagem_mvc.Controllers {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compra compra = context.Compras.Where(c => c.CompraId == id).Include(p => p.PacoteId).Include(cl => cl.ClienteId).First();
+            Compra compra = context.Compras.Where(c => c.CompraId == id).Include("Cliente").Include("Pacote").First();
             if (compra == null) {
                 return HttpNotFound();
             }
@@ -55,7 +55,7 @@ namespace agencia_viagem_mvc.Controllers {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compra compra = context.Compras.Where(c =>c.CompraId == id).Include(p => p.PacoteId).Include(cl => cl.ClienteId).First();
+            Compra compra = context.Compras.Where(c =>c.CompraId == id).Include("Pacote").Include("Cliente").First();
             if (compra == null) {
                 return HttpNotFound();
             }

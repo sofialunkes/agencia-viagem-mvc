@@ -394,7 +394,6 @@
     <Content Include="Views\Compras\Details.cshtml" />
     <Content Include="Views\Compras\Delete.cshtml" />
     <Content Include="Views\Compras\_PorCliente.cshtml" />
-    <Content Include="Views\Pacotes\_PorHotel.cshtml" />
     <Content Include="Views\Compras\_PorPacote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
