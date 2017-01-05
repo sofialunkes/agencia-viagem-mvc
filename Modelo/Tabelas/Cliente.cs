@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Modelo.Tabelas {
     public class Cliente {
-        public long Id { get; set; }
+        public long ClienteId { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public string Cpf { get; set; }

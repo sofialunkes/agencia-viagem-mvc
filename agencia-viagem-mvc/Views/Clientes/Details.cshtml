@@ -67,14 +67,14 @@
                     @Html.ActionLink("Retornar a Listagem de Clientes", "Index", null, new { @class = "btn btn-info col-md-12" })
                 </div>
                 <div class="col-md-6">
-                    @Html.ActionLink("Alterar", "Edit", new { id = Model.Id }, new { @class = "btn btn-info col-md-8" })
+                    @Html.ActionLink("Alterar", "Edit", new { id = Model.ClienteId }, new { @class = "btn btn-info col-md-8" })
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@Html.Partial("~/Views/Vendas/_PorCliente.cshtml", Model.Vendas.ToList())
+@Html.Partial("~/Views/Vendas/_PorCliente.cshtml", Model.Compras.ToList())
 @section ScriptPage{
     <script type="text/javascript">
         $(document).ready(function () {

@@ -13,7 +13,7 @@ namespace agencia_viagem_mvc.Controllers {
         private EFContext context = new EFContext();
         // GET: Pacotes
         public ActionResult Index() {
-            var pacotes = context.Pacotes.Include(p => p.Hoteis).OrderBy(p => p.Id);
+            var pacotes = context.Pacotes.OrderBy(p => p.PacoteId);
             return View(pacotes);
         }
 
@@ -22,7 +22,7 @@ namespace agencia_viagem_mvc.Controllers {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pacote pacote = context.Pacotes.Where(p => p.Id == id).Include("Compras.Pacote.Hoteis").First();
+            Pacote pacote = context.Pacotes.Where(p => p.PacoteId == id).Include("Compras.Pacote").First();
             if (pacote == null) {
                 return HttpNotFound();
             }
@@ -30,7 +30,6 @@ namespace agencia_viagem_mvc.Controllers {
         }
 
         public ActionResult Create() {
-            ViewBag.HotelId = new SelectList(context.Hoteis.OrderBy(h => h.Id), "Id", "NomeFantasia");
             return View();
         }
 
@@ -55,7 +54,6 @@ namespace agencia_viagem_mvc.Controllers {
             if (pacote == null) {
                 return HttpNotFound();
             }
-            ViewBag.HotelId = new SelectList(context.Hoteis.OrderBy(b => b.NomeFantasia), "Id", "NomeFantasia", pacote.HotelId);
             return View(pacote);
         }
 

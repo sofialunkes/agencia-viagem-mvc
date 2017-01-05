@@ -365,7 +365,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
-    <Compile Include="Controllers\HoteisController.cs" />
     <Compile Include="Controllers\PacotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -376,18 +375,13 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Hoteis\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
-    <Content Include="Views\Hoteis\Edit.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\Delete.cshtml" />
-    <Content Include="Views\Hoteis\Details.cshtml" />
-    <Content Include="Views\Hoteis\Delete.cshtml" />
-    <Content Include="Views\Hoteis\Create.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Pacotes\Edit.cshtml" />
     <Content Include="Views\Pacotes\Create.cshtml" />

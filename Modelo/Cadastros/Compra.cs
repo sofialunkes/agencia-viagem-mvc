@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Modelo.Cadastros{
     public class Compra {
-        public long? Id { get; set; }
+        public long? CompraId { get; set; }
         public string Descricao { get; set; }
         public DateTime DataAquisicao { get; set; }
 

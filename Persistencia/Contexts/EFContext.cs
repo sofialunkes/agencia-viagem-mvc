@@ -12,7 +12,6 @@ namespace Persistencia.Contexts {
         public EFContext() : base("AgenciaViagem") {
             Database.SetInitializer<EFContext>(new DropCreateDatabaseIfModelChanges<EFContext>());
         }
-        public DbSet<Hotel> Hoteis { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Pacote> Pacotes { get; set; }
         public DbSet<Compra> Compras { get; set; }

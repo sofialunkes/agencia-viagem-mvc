@@ -82,16 +82,16 @@
                         Deseja prosseguir?
                     </strong>
                 </p>
-                @using (Html.BeginForm("Delete", "Vendas", FormMethod.Post, new { @id = "delete-form", role = "form" })) {
-                    @Html.HiddenFor(v => v.Id)
+                @using (Html.BeginForm("Delete", "Compras", FormMethod.Post, new { @id = "delete-form", role = "form" })) {
+                    @Html.HiddenFor(c => c.CompraId)
                     @Html.AntiForgeryToken()
                 }
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="$('#delete-form').submit();">
+                <button type="button" class="btn btn-default col-md-offset-1 col-md-4" onclick="$('#delete-form').submit();">
                     Sim, excluir compra
                 </button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                <button type="button" class="btn btn-primary col-md-4" data-dismiss="modal">
                     Não, não excluir.
                 </button>
             </div>

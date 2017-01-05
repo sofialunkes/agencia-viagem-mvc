@@ -44,7 +44,6 @@
     <Compile Include="Cadastros\Pacote.cs" />
     <Compile Include="Cadastros\Compra.cs" />
     <Compile Include="Tabelas\Cliente.cs" />
-    <Compile Include="Tabelas\Hotel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

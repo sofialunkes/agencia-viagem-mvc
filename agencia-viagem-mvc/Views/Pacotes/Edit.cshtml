@@ -14,7 +14,7 @@
         <div class="panel-body">
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.PacoteId)
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -29,14 +29,6 @@
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    @Html.LabelFor(model => model.HotelId, "HotelId", htmlAttributes: new {@class="control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("HotelId", null, htmlAttributes: new { @class="form-control"})
-                        @Html.ValidationMessageFor(model => model.HotelId,"",new {@class="text-control" })
                     </div>
                 </div>
             </div>
@@ -55,7 +47,7 @@
         </div>
     </div>
 }
-@Html.Partial("~/Views/Vendas/_PorPacote.cshtml", Model.Vendas.ToList())
+@Html.Partial("~/Views/Vendas/_PorPacote.cshtml", Model.Compras.ToList())
 @section ScriptPage{
     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
