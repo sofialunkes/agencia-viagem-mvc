@@ -1,9 +1,6 @@
-﻿using System;
-using Modelo.Cadastros;
+﻿using Modelo.Cadastros;
 using Persistencia.Contexts;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.Data.Entity;
