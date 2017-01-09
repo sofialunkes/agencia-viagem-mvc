@@ -1,77 +1,51 @@
-﻿using System;
-using Modelo.Cadastros;
+﻿using Modelo.Cadastros;
 using Persistencia.Contexts;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.Data.Entity;
+using Servico.Cadastros;
+using Servico.Tabelas;
 
 namespace agencia_viagem_mvc.Controllers {
     public class ComprasController : Controller {
-        private EFContext context = new EFContext();
+        private CompraServico compraServico = new CompraServico();
+        private ClienteServico clienteServico = new ClienteServico();
+        private PacoteServico pacoteServico = new PacoteServico();
 
         // GET: Compras
         public ActionResult Index() {
-            var compras = context.Compras.Include(c => c.Cliente).Include(p => p.Pacote).OrderByDescending(co => co.DataAquisicao);
+            //var compras = context.Compras.Include(c => c.Cliente).Include(p => p.Pacote).OrderByDescending(co => co.DataAquisicao);
+            //return View(compras);
+            var compras = compraServico.ObterCompraPorMaiorData();
             return View(compras);
         }
 
-        // GET: Compras/Details/5
-        public ActionResult Details(long? id) {
+        private ActionResult ObterVisaoCompraPorId(long? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compra compra = context.Compras.Where(c => c.CompraId == id).Include("Cliente").Include("Pacote").First();
+            Compra compra = compraServico.ObterCompraPorId((long)id);
             if (compra == null) {
                 return HttpNotFound();
             }
             return View(compra);
         }
 
-        // GET: Compras/Create
-        public ActionResult Create() {
-            ViewBag.PacoteId = new SelectList(context.Pacotes.OrderBy(p =>p.Nome),"PacoteId","Nome");
-            ViewBag.ClienteId = new SelectList(context.Clientes.OrderBy(c => c.Nome), "ClienteId", "Nome");
-            return View();
-        }
-
-        // POST: Compras/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Compra compra) {
-            try {
-                context.Compras.Add(compra);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            } catch {
-                return View(compra);
-            }
-        }
-
-        // GET: Compras/Edit/5
-        public ActionResult Edit(long? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Compra compra = context.Compras.Where(c =>c.CompraId == id).Include("Pacote").Include("Cliente").First();
+        private void PopularViewBag(Compra compra = null) {
             if (compra == null) {
-                return HttpNotFound();
+                ViewBag.PacoteId = new SelectList(pacoteServico.ObterPacotesPorNome(), "PacoteId", "Nome");
+                ViewBag.ClienteId = new SelectList(clienteServico.ObterClientesPorNome(), "ClienteId", "Nome");
+            } else {
+                ViewBag.PacoteId = new SelectList(pacoteServico.ObterPacotesPorNome(), "PacoteId", "Nome", compra.PacoteId);
+                ViewBag.ClienteId = new SelectList(clienteServico.ObterClientesPorNome(), "ClienteId", "Nome", compra.ClienteId);
             }
-            ViewBag.ClienteId = new SelectList(context.Clientes.OrderBy(c =>c.Nome), "ClienteId","Nome", compra.ClienteId);
-            ViewBag.PacoteId = new SelectList(context.Pacotes.OrderBy(p => p.Nome), "PacoteId", "Nome", compra.PacoteId);
-            return View(compra);
         }
 
-        // POST: Compras/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Compra compra) {
+        private ActionResult GravarCompra(Compra compra) {
             try {
                 if (ModelState.IsValid) {
-                    context.Entry(compra).State = EntityState.Modified;
-                    context.SaveChanges();
+                    compraServico.GravarCompra(compra);
                     return RedirectToAction("Index");
                 }
                 return View(compra);
@@ -80,16 +54,41 @@ namespace agencia_viagem_mvc.Controllers {
             }
         }
 
+
+        // GET: Compras/Create
+        public ActionResult Create() {
+            PopularViewBag();
+            return View();
+        }
+
+        // POST: Compras/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Compra compra) {
+            return GravarCompra(compra);
+        }
+
+        // GET: Compras/Edit/5
+        public ActionResult Edit(long? id) {
+            PopularViewBag(compraServico.ObterCompraPorId((long)id));
+            return ObterVisaoCompraPorId(id);
+        }
+
+        // POST: Compras/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Compra compra) {
+            return GravarCompra(compra);
+        }
+
+        // GET: Compras/Details/5
+        public ActionResult Details(long? id) {
+            return ObterVisaoCompraPorId(id);
+        }
+
         // GET: Compras/Delete/5
         public ActionResult Delete(long? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Compra compra = context.Compras.Where(c => c.CompraId == id).Include(p =>p.Pacote).Include(cl => cl.Cliente).First();
-            if (compra == null) {
-                return HttpNotFound();
-            }
-            return View(compra);
+            return ObterVisaoCompraPorId(id);
         }
 
         // POST: Compras/Delete/5
@@ -97,9 +96,7 @@ namespace agencia_viagem_mvc.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Delete(long id) {
             try {
-                Compra compra = context.Compras.Find(id);
-                context.Compras.Remove(compra);
-                context.SaveChanges();
+                Compra compra = compraServico.EliminarCompraPorId(id);
                 TempData["Mensagem"] = "A compra realizada do Cliente " + compra.Cliente.Nome + " de pacote " + compra.Pacote.Nome + " com data de aquisição em " + compra.DataAquisicao + "foi removida";
                 return RedirectToAction("Index");
             } catch {

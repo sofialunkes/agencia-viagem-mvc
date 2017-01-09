@@ -1,11 +1,6 @@
-﻿using Modelo.Cadastros;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace Modelo.Tabelas {
+namespace Modelo.Cadastros {
     public class Cliente {
         public long ClienteId { get; set; }
         public string Nome { get; set; }

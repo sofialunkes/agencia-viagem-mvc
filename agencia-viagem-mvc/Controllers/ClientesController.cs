@@ -1,11 +1,8 @@
 ﻿using Persistencia.Contexts;
-using Modelo.Tabelas;
-using System;
-using System.Collections.Generic;
+using Modelo.Cadastros;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace agencia_viagem_mvc.Controllers {
