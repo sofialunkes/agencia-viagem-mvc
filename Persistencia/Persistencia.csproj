@@ -46,6 +46,10 @@
       <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Web.6.9.9\lib\net45\MySql.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -61,6 +65,10 @@
     <Compile Include="DAL\Cadastros\ClienteDAL.cs" />
     <Compile Include="DAL\Cadastros\CompraDAL.cs" />
     <Compile Include="DAL\Tabelas\PacoteDAL.cs" />
+    <Compile Include="Migrations\201701050522252_InitialCreate.cs" />
+    <Compile Include="Migrations\201701050522252_InitialCreate.Designer.cs">
+      <DependentUpon>201701050522252_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +81,11 @@
       <Project>{ccb93c66-2b56-41c6-a11f-9e5b0ba910eb}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701050522252_InitialCreate.resx">
+      <DependentUpon>201701050522252_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

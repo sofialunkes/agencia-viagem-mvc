@@ -4,14 +4,17 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Servico.Cadastros;
 
 namespace agencia_viagem_mvc.Controllers {
     public class ClientesController : Controller {
         private EFContext context = new EFContext();
-        
+
+        private ClienteServico clienteServico = new ClienteServico();
+
         public ActionResult Index() {
-            return View(context.Clientes.OrderBy(
-                c => c.Nome));
+            var clientes = clienteServico.ObterClientesPorNome();
+            return View(clientes);
         }
 
         public ActionResult Create() {
@@ -27,57 +30,57 @@ namespace agencia_viagem_mvc.Controllers {
         }
 
         public ActionResult Edit(long? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente cliente = context.Clientes.Find(id);
-            if (cliente == null) {
-                return HttpNotFound();
-            }
-            return View(cliente);
+            return ObterVisaoClientePorId(id);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Cliente cliente) {
-            if (ModelState.IsValid) {
-                context.Entry(cliente).State = EntityState.Modified;
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(cliente);
+            return GravarCliente(cliente);
         }
 
         public ActionResult Details(long? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente cliente = context.Clientes.Where(c => c.ClienteId == id).Include("Compras.Pacote").First();
-            if (cliente == null) {
-                return HttpNotFound();
-            }
-            return View(cliente);
+            return ObterVisaoClientePorId(id);
         }
 
         public ActionResult Delete (long? id) {
+            return ObterVisaoClientePorId(id);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete (long id) {
+            try {
+                Cliente cliente = clienteServico.EliminarClientePorId(id);
+                TempData["Mensagem"] = "Hotel " + cliente.Nome.ToUpper() + " foi removido";
+                return RedirectToAction("Index");
+            } catch{
+                return View();
+            }
+        }
+
+
+        private ActionResult ObterVisaoClientePorId(long? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = context.Clientes.Find(id);
+            Cliente cliente = clienteServico.ObterClientePorId((long)id);
             if(cliente == null) {
                 return HttpNotFound();
             }
             return View(cliente);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete (long id) {
-            Cliente cliente = context.Clientes.Find(id);
-            context.Clientes.Remove(cliente);
-            context.SaveChanges();
-            TempData["Mensagem"] = "Hotel " + cliente.Nome.ToUpper() + " foi removido";
-            return RedirectToAction("Index");
+        private ActionResult GravarCliente(Cliente cliente) {
+            try {
+                if (ModelState.IsValid) {
+                    clienteServico.GravarCliente(cliente);
+                    return RedirectToAction("Index");
+                }
+                return View(cliente);
+            } catch {
+                return View(cliente);
+            }
         }
     }
 }

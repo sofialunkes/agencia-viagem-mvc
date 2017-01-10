@@ -9,6 +9,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using Persistencia.Migrations;
 
 namespace Persistencia.Contexts {
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class EFContext : DbContext {
         public EFContext() : base("AgenciaViagem") {
             Database.SetInitializer<EFContext>(new MigrateDatabaseToLatestVersion<EFContext, Configuration>());
