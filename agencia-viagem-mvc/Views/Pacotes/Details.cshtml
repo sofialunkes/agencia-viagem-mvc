@@ -1,4 +1,4 @@
-﻿@model Modelo.Cadastros.Pacote
+﻿@model Modelo.Tabelas.Pacote
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,27 +7,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading">Detalhes Pacote @Html.DisplayFor(model => model.Nome)</div>
     <div class="panel-body">
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.Nome)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-plane">
-                    </i>
-                </span>
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.Descricao)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-comment"></i>
-                </span>
-                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-            </div>
-        </div>
+       @Html.Partial("~/Views/Pacotes/_PartialDetailsContentPanel.cshtml",Model)
     </div>
     <div class="panel-footer panel-info">
         <div class="row">

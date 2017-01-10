@@ -1,4 +1,4 @@
-﻿using Modelo.Cadastros;
+﻿using Modelo.Tabelas;
 using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
