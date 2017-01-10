@@ -10,5 +10,17 @@ namespace Servico.Tabelas {
         public IQueryable<Pacote> ObterPacotesPorNome() {
             return pacoteDAL.ObterPacotesPorNome();
         }
+
+        public Pacote ObterPacotePorId(long id) {
+            return pacoteDAL.ObterPacotePorId(id);
+        }
+
+        public void GravarPacote(Pacote pacote) {
+            pacoteDAL.GravarPacote(pacote);
+        }
+
+        public Pacote EliminarPacotePorId(long id) {
+            return pacoteDAL.EliminarPacotePorId(id);
+        }
     }
 }

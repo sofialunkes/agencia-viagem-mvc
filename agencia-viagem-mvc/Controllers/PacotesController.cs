@@ -1,5 +1,6 @@
 ﻿using Modelo.Tabelas;
 using Persistencia.Contexts;
+using Servico.Tabelas;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,22 +12,40 @@ using System.Web.Mvc;
 namespace agencia_viagem_mvc.Controllers {
     public class PacotesController : Controller {
         private EFContext context = new EFContext();
+
+        private PacoteServico pacoteServico = new PacoteServico();
+
         // GET: Pacotes
         public ActionResult Index() {
-            var pacotes = context.Pacotes.OrderBy(p => p.PacoteId);
+            var pacotes = pacoteServico.ObterPacotesPorNome();
             return View(pacotes);
         }
 
-
-        public ActionResult Details(long? id) {
+        private ActionResult ObterVisaoPacotePorId(long? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pacote pacote = context.Pacotes.Where(p => p.PacoteId == id).Include("Compras.Cliente").First();
+            Pacote pacote = pacoteServico.ObterPacotePorId((long)id);
             if (pacote == null) {
                 return HttpNotFound();
             }
             return View(pacote);
+        }
+
+        private ActionResult GravarPacote(Pacote pacote) {
+            try {
+                if (ModelState.IsValid) {
+                    pacoteServico.GravarPacote(pacote);
+                    return RedirectToAction("Index");
+                }
+                return View(pacote);
+            } catch {
+                return View(pacote);
+            }
+        }
+
+        public ActionResult Details(long? id) {
+            return ObterVisaoPacotePorId(id);
         }
 
         public ActionResult Create() {
@@ -36,62 +55,35 @@ namespace agencia_viagem_mvc.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Pacote pacote) {
-            try {
-                context.Pacotes.Add(pacote);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            } catch {
-                return View(pacote);
-            }
+            return GravarPacote(pacote);
         }
 
 
         public ActionResult Edit(long? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Pacote pacote = context.Pacotes.Find(id);
-            if (pacote == null) {
-                return HttpNotFound();
-            }
-            return View(pacote);
+            return ObterVisaoPacotePorId(id);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Pacote pacote) {
-            try {
-                if (ModelState.IsValid) {
-                    context.Entry(pacote).State = EntityState.Modified;
-                    context.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(pacote);
-            } catch {
-                return View(pacote);
-            }
+            return GravarPacote(pacote);
 
         }
 
         public ActionResult Delete(long? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Pacote pacote = context.Pacotes.Find(id);
-            if (pacote == null) {
-                return HttpNotFound();
-            }
-            return View(pacote);
+            return ObterVisaoPacotePorId(id);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(long id) {
-            Pacote pacote = context.Pacotes.Find(id);
-            context.Pacotes.Remove(pacote);
-            context.SaveChanges();
-            TempData["Mensagem"] = "Pacote " + pacote.Nome.ToUpper() + " foi removido";
-            return RedirectToAction("Index");
+            try {
+                Pacote pacote = pacoteServico.EliminarPacotePorId(id);
+                TempData["Mensagem"] = "Pacote " + pacote.Nome.ToUpper() + " foi removido";
+                return RedirectToAction("Index");
+            } catch {
+                return View();
+            }
         }
     }
 }

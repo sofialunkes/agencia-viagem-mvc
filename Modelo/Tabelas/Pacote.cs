@@ -7,7 +7,7 @@ using Modelo.Cadastros;
 
 namespace Modelo.Tabelas {
     public class Pacote {
-        public long PacoteId { get; set; }
+        public long? PacoteId { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public int QuantidadeDias { get; set; }
