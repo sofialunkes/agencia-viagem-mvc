@@ -15,8 +15,6 @@ namespace agencia_viagem_mvc.Controllers {
 
         // GET: Compras
         public ActionResult Index() {
-            //var compras = context.Compras.Include(c => c.Cliente).Include(p => p.Pacote).OrderByDescending(co => co.DataAquisicao);
-            //return View(compras);
             var compras = compraServico.ObterCompraPorMaiorData();
             return View(compras);
         }
@@ -48,8 +46,10 @@ namespace agencia_viagem_mvc.Controllers {
                     compraServico.GravarCompra(compra);
                     return RedirectToAction("Index");
                 }
+                PopularViewBag(compra);
                 return View(compra);
             } catch {
+                PopularViewBag(compra);
                 return View(compra);
             }
         }

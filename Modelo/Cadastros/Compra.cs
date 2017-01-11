@@ -8,12 +8,14 @@ namespace Modelo.Cadastros {
         [DisplayName("Id")]
         public long? CompraId { get; set; }
 
-        [StringLength(140,ErrorMessage="Descricao deve possuir no maximo 140 caracteres")]
+        [StringLength(140,ErrorMessage= "Descrição nao pode passar de 140 caracteres")]
+        [Required(ErrorMessage ="Informe Descrição da Compra")]
         public string Descricao { get; set; }
         
         [DisplayName("Data de Aquisição")]
         [Required(ErrorMessage ="Data não pode ser nula")]
-        public DateTime DataAquisicao { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? DataAquisicao { get; set; }
 
         [DisplayName("Cliente")]
         public long? ClienteId { get; set; }
