@@ -7,7 +7,7 @@ using System.Data.Entity;
 using Servico.Cadastros;
 using Servico.Tabelas;
 
-namespace agencia_viagem_mvc.Controllers {
+namespace agencia_viagem_mvc.Areas.Cadastros.Controllers {
     public class ComprasController : Controller {
         private CompraServico compraServico = new CompraServico();
         private ClienteServico clienteServico = new ClienteServico();

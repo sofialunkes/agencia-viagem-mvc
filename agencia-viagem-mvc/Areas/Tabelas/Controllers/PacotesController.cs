@@ -9,7 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace agencia_viagem_mvc.Controllers {
+namespace agencia_viagem_mvc.Areas.Tabelas.Controllers {
     public class PacotesController : Controller {
         private EFContext context = new EFContext();
 

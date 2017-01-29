@@ -345,6 +345,8 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Areas\Areas\Cadastros\Views\web.config" />
+    <Content Include="Areas\Areas\Tabelas\Views\web.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -357,15 +359,28 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jqueryui\AUTHORS.txt" />
+    <Content Include="Scripts\jqueryui\index.html" />
+    <Content Include="Scripts\jqueryui\jquery-ui.css" />
+    <Content Include="Scripts\jqueryui\jquery-ui.js" />
+    <Content Include="Scripts\jqueryui\jquery-ui.min.css" />
+    <Content Include="Scripts\jqueryui\jquery-ui.min.js" />
+    <Content Include="Scripts\jqueryui\jquery-ui.structure.css" />
+    <Content Include="Scripts\jqueryui\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jqueryui\jquery-ui.theme.css" />
+    <Content Include="Scripts\jqueryui\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jqueryui\LICENSE.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\ComprasController.cs" />
-    <Compile Include="Controllers\PacotesController.cs" />
+    <Compile Include="Areas\Areas\Cadastros\CadastrosAreaRegistration.cs" />
+    <Compile Include="Areas\Areas\Cadastros\Controllers\ClientesController.cs" />
+    <Compile Include="Areas\Areas\Cadastros\Controllers\ComprasController.cs" />
+    <Compile Include="Areas\Areas\Tabelas\Controllers\PacotesController.cs" />
+    <Compile Include="Areas\Areas\Tabelas\TabelasAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -397,6 +412,8 @@
     <Content Include="Views\Compras\_PartialDetailsContentPanel.cshtml" />
     <Content Include="Views\Clientes\_PartialDetailsContentPanel.cshtml" />
     <Content Include="Views\Pacotes\_PartialDetailsContentPanel.cshtml" />
+    <Content Include="Views\Compras\_PartialEditContentPanel.cshtml" />
+    <Content Include="Scripts\jqueryui\package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -406,6 +423,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Areas\Cadastros\Models\" />
+    <Folder Include="Areas\Areas\Cadastros\Views\Shared\" />
+    <Folder Include="Areas\Areas\Tabelas\Models\" />
+    <Folder Include="Areas\Areas\Tabelas\Views\Shared\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Scripts\jqueryui\external\" />
+    <Folder Include="Scripts\jqueryui\images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modelo\Modelo.csproj">

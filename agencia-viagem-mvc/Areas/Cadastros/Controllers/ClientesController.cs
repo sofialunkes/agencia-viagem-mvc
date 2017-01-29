@@ -6,7 +6,7 @@ using System.Net;
 using System.Web.Mvc;
 using Servico.Cadastros;
 
-namespace agencia_viagem_mvc.Controllers {
+namespace agencia_viagem_mvc.Areas.Cadastros.Controllers {
     public class ClientesController : Controller {
         private EFContext context = new EFContext();
 

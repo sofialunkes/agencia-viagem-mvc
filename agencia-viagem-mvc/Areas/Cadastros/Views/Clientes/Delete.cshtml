@@ -1,0 +1,28 @@
+﻿@model Modelo.Cadastros.Cliente
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Visualizando Detalhes do Cliente";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Detahes do Cliente a ser removido </div>
+    <div class="panel-body">
+        @Html.Partial("~/Areas/Cadastros/Views/Clientes/_PartialDetailsContentPanel.cshtml", Model)
+    </div>
+    <div class="panel-footer panel-info">
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-4">
+                        @Html.ActionLink("Retornar a Listagem de Clientes", "Index", null, new { @class = "btn btn-info col-md-12" })
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="Remover Cliente" class="btn btn-danger col-md-8" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

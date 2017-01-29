@@ -1,0 +1,42 @@
+﻿@model Modelo.Cadastros.Cliente
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Alterando informações do Cliente";
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <div class="panel panel-primary">
+        <div class="panel-heading">Alterar Dados do Cliente</div>
+        <div class="panel-body">
+            @Html.Partial("~/Areas/Cadastros/Views/Clientes/_PartialEditContentPanel.cshtml", Model)
+        </div>
+        <div class="panel-footer panel-info">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-4">
+                        @Html.ActionLink("Retornar a Listagem de Clientes", "Index", null, new { @class = "btn btn-warning" })
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="Alterar Cliente" class="btn btn-danger col-md-8" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section ScriptPage{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $("#menuCliente").addClass("active");
+        });
+    </script>
+}
