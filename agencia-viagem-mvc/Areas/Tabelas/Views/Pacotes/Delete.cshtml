@@ -10,27 +10,7 @@
         Dados do Pacote a ser removido
     </div>
     <div class="panel-body">
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.Nome)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-plane">
-                    </i>
-                </span>
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.DisplayNameFor(model => model.Descricao)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-comment"></i>
-                </span>
-                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-            </div>
-        </div>
+        @Html.Partial("~/Areas/Tabelas/Views/Pacotes/_PartialDetailsContentPanel.cshtml", Model)
     </div>
     <div class="panel-footer panel-info">
         @using (Html.BeginForm()) {
@@ -38,7 +18,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-4">
-                        @Html.ActionLink("Retornar para Listagem de Pacotes", "Index", null, new { @class="btn btn-info col-md-12"})
+                        @Html.ActionLink("Retornar para Listagem de Pacotes", "Index", null, new { @class = "btn btn-info col-md-12" })
                     </div>
                     <div class="col-md-6">
                         <input type="submit" value="Remover Pacote" class="btn btn-danger col-md-8" />
